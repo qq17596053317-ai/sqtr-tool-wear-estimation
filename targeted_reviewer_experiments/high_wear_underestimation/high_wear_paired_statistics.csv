@@ -1,0 +1,4 @@
+Endpoint,IndependentCaseN,PrimaryMean,SafetyWeightedMean,MeanPairedDifference,BootstrapCILower,BootstrapCIUpper,RawWilcoxonP,HolmAdjustedP,SignificantAfterHolm,SignedRankStatistic,BootstrapProbabilitySafetyImproves
+High-wear MAE,15,0.135236659859681,0.1373822125351,0.00214555267541891,-0.00174257831680587,0.0081792363430626,1,1,0,2,0.2354
+Underprediction rate,15,0.605555555555556,0.627777777777778,0.0222222222222222,0,0.0666666666666667,1,1,0,1,0
+Alert miss rate,15,0.251111111111111,0.251111111111111,0,0,0,1,1,0,0,0

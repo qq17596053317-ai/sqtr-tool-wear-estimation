@@ -1,0 +1,11 @@
+Finding,Value,Unit
+Proposed model MAE,0.108772765115727,VB
+Proposed model RMSE,0.175923171578738,VB
+Proposed model R2,0.540884745839963,dimensionless
+MAE improvement vs conventional,11.7418192185596,%
+RMSE improvement vs conventional,15.4942760786707,%
+R2 absolute improvement,0.183793692621543,dimensionless
+Paired Wilcoxon p-value,0.033538818359375,p-value
+Bootstrap improvement probability,0.9923,probability
+Random-split case overlap,99.1095890410959,%
+Random-split MAE reduction vs LOCO,12.3252307535757,%

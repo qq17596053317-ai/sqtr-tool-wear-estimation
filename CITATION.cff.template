@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript."
+title: "SQTR tool-wear estimation"
+type: software
+version: 1.0.0
+date-released: 2026-07-31
+repository-code: "https://github.com/qq17596053317-ai/sqtr-tool-wear-estimation"
+authors:
+  - family-names: "REPLACE_WITH_AUTHOR_SURNAME"
+    given-names: "REPLACE_WITH_AUTHOR_GIVEN_NAME"
