@@ -1,0 +1,7 @@
+Sensor,Above1Percent,Above10Percent,Above50Percent,MaximumRailRatio
+smcAC,0,0,0,0.000222222222222222
+smcDC,40,37,30,1
+vib_table,0,0,0,0.000222222222222222
+vib_spindle,0,0,0,0.000888888888888889
+AE_table,0,0,0,0.000222222222222222
+AE_spindle,1,0,0,0.0315555555555556

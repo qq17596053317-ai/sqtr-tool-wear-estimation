@@ -1,0 +1,14 @@
+# Third-party raw datasets
+mill/mill.mat
+nuaa_orthogonal_bundle_high_resolution.csv
+phm2010_bundle_high_resolution.csv
+
+# MATLAB transient files
+*.asv
+*.m~
+slprj/
+codegen/
+
+# OS/editor
+.DS_Store
+Thumbs.db

@@ -1,0 +1,4 @@
+Cutter,RawRowN,TypicalCadenceSeconds,ReferenceMultiplier,TimestampRunCount,ExpectedRunCount,MatchesExpected315,WearChangeRunCount,WearBoundaryRecallByTimestamp,TimestampBoundaryPrecisionAgainstWearChange,TimestampBoundariesWithRepeatedWear,WearChangesMissedByTimestamp,MaximumBoundaryIncrementSeconds,MinimumWithinCutIncrementSeconds,CadenceSeparationRatio,TimestampMonotonicInFileOrder,SortedOrderMatchesFileOrder
+c1,34722,0.0399999999999636,0.1,315,315,1,255,1,0.808917197452229,60,0,2.00000000063483e-05,0.0399999999999636,1999.99999936335,1,1
+c4,35279,0.0399999999999636,0.1,315,315,1,260,1,0.82484076433121,55,0,2.00000000063483e-05,0.0399999999999636,1999.99999936335,1,1
+c6,34674,0.0399999999999636,0.1,315,315,1,290,1,0.920382165605096,25,0,2.00000000063483e-05,0.0399999999999636,1999.99999936335,1,1
