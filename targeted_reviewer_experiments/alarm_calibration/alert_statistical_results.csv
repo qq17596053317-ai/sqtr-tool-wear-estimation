@@ -1,0 +1,3 @@
+Endpoint,IndependentCaseN,MeanDifferenceCalibratedMinusUncalibrated,BootstrapCILower,BootstrapCIUpper,RawWilcoxonP,HolmAdjustedP,SignedRankStatistic,BootstrapProbabilityDifferenceBelowZero
+Alert miss rate,15,-0.0927777777777778,-0.197777777777778,-0.0111111111111111,0.125,0.125,0,0.9913
+False-positive rate,16,0.106622023809524,0.0550595238095238,0.164657738095238,0.00390625,0.0078125,45,0

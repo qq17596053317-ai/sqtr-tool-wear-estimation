@@ -1,0 +1,2 @@
+MeanCaseMacroDifferenceNoTimeMinusSQTR_mm,MedianCaseDifferenceNoTimeMinusSQTR_mm,BootstrapCILower_mm,BootstrapCIUpper_mm,CasesWorseWithoutTime,CasesBetterWithoutTime,IndependentCaseN,ExactWilcoxonP,SignedRankStatistic,BootstrapSeed,BootstrapIterations
+0.00520262578094083,0.0065446392947295,0.00118033082067437,0.00925664458938471,11,5,16,0.033538818359375,109,20260730,10000

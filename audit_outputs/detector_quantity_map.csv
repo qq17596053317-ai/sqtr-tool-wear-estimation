@@ -1,0 +1,12 @@
+QuantityIndex,Quantity,Source,IncludedInRobustStandardisation,Role
+1,Mean,signal feature,yes,detector input
+2,RMS,signal feature,yes,detector input
+3,Standard deviation,signal feature,yes,detector input
+4,Peak-to-peak amplitude,signal feature,yes,detector input
+5,Median,signal feature,yes,detector input
+6,MAD,signal feature,yes,detector input
+7,Crest factor,signal feature,yes,detector input
+8,Extreme-end plateau occupancy,raw quality descriptor,yes,detector input
+9,Zero occupancy,raw quality descriptor,yes,detector input
+10,Flat occupancy,raw quality descriptor,yes,detector input
+11,High-frequency descriptor,raw quality descriptor,yes,detector input

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the associated SQTR tool-wear-estimation manuscript."
+title: "SQTR: sensor-quality-aware temporal routing for milling tool-wear estimation"
+type: software
+version: "v17-verification"
+date-released: 2026-08-01
+authors:
+  - family-names: Jia
+    given-names: Jinyuan
+  - family-names: Xia
+    given-names: Tian
+  - family-names: Mao
+    given-names: Jianfeng
+repository-code: "https://github.com/qq17596053317-ai/sqtr-tool-wear-estimation"
+license: MIT

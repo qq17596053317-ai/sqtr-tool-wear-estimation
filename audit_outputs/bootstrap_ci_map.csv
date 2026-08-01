@@ -1,0 +1,11 @@
+Analysis,ResamplingUnit,Statistic,Iterations,Seed,CIType,MultiplicityAdjustmentToCI,MultiplicityAdjustmentToP
+Input-matched routing comparison,NASA case,mean case-MAE difference,10000,20260729,two-sided percentile 95% CI,no,Holm within prespecified routing family
+q_i role ablation,NASA case,mean case-MAE difference,10000,20260729,two-sided percentile 95% CI,no,Holm within four-comparison q_i family
+Time ablation,NASA case,mean no-time-minus-SQTR case-MAE difference,10000,20260730,two-sided percentile 95% CI,no,none (single prespecified comparison)
+Time permutation,within-case record order,pooled MAE under permutation,100,20260723,empirical permutation distribution,no,none
+Channel ablation,NASA case,mean case-MAE difference,10000,analysis-specific fixed stream,two-sided percentile 95% CI,no,Holm within channel family
+Observation-window comparison,NASA case,mean case-MAE difference,10000,analysis-specific fixed stream,two-sided percentile 95% CI,no,Holm within window family
+Randomised degradation,independent experiment or cutter after averaging 30 repeats,mean paired relative-MAE difference,10000,analysis-specific fixed stream,two-sided percentile 95% CI,no,Holm across NUAA and PHM comparisons
+Fixed-grid sensitivity benchmark,independent experiment or cutter,mean paired relative-MAE difference,10000,20260717 stream continued,two-sided percentile 95% CI,no,Holm across dataset comparisons
+Alert calibration,NASA case,mean paired rate difference,10000,20267101 and 20267102,two-sided percentile 95% CI,no,Holm across missed-alarm and false-positive endpoints
+High-wear residual bins,NASA case cluster,bin-mean residual,10000,analysis-specific fixed stream,two-sided percentile 95% CI,no,descriptive

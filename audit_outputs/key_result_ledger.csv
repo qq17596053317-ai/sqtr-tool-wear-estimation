@@ -1,0 +1,10 @@
+Result,VerifiedValue,AuthoritativeSource
+"NASA SQTR pooled MAE","0.108773 mm",mill/results/time_model_overall.csv
+"Input-matched fixed full-sensor plus-time pooled MAE","0.116210 mm",mill/results/time_model_overall.csv
+"Input-matched pooled MAE reduction","6.3998%",targeted_reviewer_experiments/nasa_qi_role_ablation/qi_role_route_comparisons.csv
+"Input-matched case-macro difference (SQTR - comparator)","-0.005184 mm; 95% CI [-0.018274, 0.004043]; Holm p=0.644531",targeted_reviewer_experiments/nasa_qi_role_ablation/qi_role_route_comparisons.csv
+"No-time minus SQTR case-macro difference","0.005203 mm; 95% CI [0.001180, 0.009257]; exact p=0.03353882",audit_outputs/time_ablation_case_macro_audit.csv
+"Randomised-degradation relative-MAE reduction","22.2365%; Holm p=0.01464844",additional_validation_results/reviewer_improvements/random_fault_statistics.csv
+"Fixed-grid relative MAE (fixed, automatic, Oracle)","1.374499, 1.086247, 1.052557",multifault_robustness_results/multifault_statistics.csv
+"Primary alert miss-rate difference","-0.092778; 95% CI [-0.197778, -0.011111]; Holm p=0.125000",targeted_reviewer_experiments/alarm_calibration/alert_statistical_results.csv
+"Primary false-positive-rate difference","0.106622; 95% CI [0.055060, 0.164658]; Holm p=0.007812",targeted_reviewer_experiments/alarm_calibration/alert_statistical_results.csv
