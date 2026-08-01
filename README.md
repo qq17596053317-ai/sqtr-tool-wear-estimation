@@ -37,7 +37,7 @@ phm2010_bundle_high_resolution.csv
 - NUAA: <https://doi.org/10.21227/3AA1-5E83>
 - UniWear processed bundles: <https://github.com/katulu-io/uniwear-dataset>
   (commit `66c894f2449f4393126e906e086485a8f9d95171`)
-- PHM 2010 description: <https://phmsociety.org/2010-phm-data-challenge-comes-to-a-close/>
+- PHM 2010 official Data Challenge page: <https://phmsociety.org/phm_competition/2010-phm-society-conference-data-challenge/>
 
 ## Main execution order
 
@@ -88,7 +88,7 @@ columns 37-45.
 
 - `mill/results`: NASA features, predictions, ablations and statistics
 - `external_validation_results`: clean external-dataset validation
-- `multifault_robustness_results`: fixed-severity-grid and Oracle analyses
+- `multifault_robustness_results`: positive-bias fixed-severity-grid and Oracle sensitivity analyses
 - `additional_validation_results/reviewer_improvements`: 30-repeat randomised
   artificial degradation and reviewer-requested checks
 - `targeted_reviewer_experiments/nasa_qi_role_ablation`: q_i role ablation and
@@ -113,11 +113,14 @@ its results to `audit_outputs/`.
 
 ## Notes
 
-The term **plateau clipping** denotes an artificial operator or an empirical
-upper-end plateau; it is not a documented hardware saturation rail. The
-30-repeat randomised stress test and separate fixed-severity-grid sensitivity
-benchmark use different injection designs, as documented in the manuscript
-supplement and audit reports.
+The term **plateau clipping** denotes the contiguous artificial operator used
+in the 30-repeat randomised stress test, or the empirical NASA upper-end dwell
+pattern; it is not a documented hardware saturation rail. In the separate
+fixed-severity grid, the archived internal labels `Saturation` and `Dropout`
+instead mean **distributed extreme-value replacement** and **distributed zero
+replacement** at evenly spaced, non-contiguous indices. That grid evaluates
+positive bias only; its Oracle result does not cover negative-bias effects.
+The two designs must therefore not be treated as the same degradation morphology.
 
 ## Licence
 

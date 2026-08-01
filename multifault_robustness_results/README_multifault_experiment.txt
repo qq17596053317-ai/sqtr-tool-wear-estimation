@@ -4,11 +4,15 @@ MATLAB 24.2.0.2712019 (R2024b)
 Independent units: NUAA W1-W9 (n=9) and PHM2010 c1/c4/c6 (n=3).
 Technical run-level observations were not treated as independent inferential n.
 Sensors: force_z, vibration_x, vibration_y.
-Faults and severity values:
-- Saturation: [0.1 0.3 0.5 0.7] fraction
-- Dropout: [0.1 0.3 0.5 0.7] fraction
-- Bias: [0.5 1 2 3] signal_sd
+Faults and severity values (archived internal label -> manuscript term):
+- Saturation -> distributed extreme-value replacement: [0.1 0.3 0.5 0.7] fraction
+- Dropout -> distributed zero replacement: [0.1 0.3 0.5 0.7] fraction
+- Bias -> positive bias only: [0.5 1 2 3] signal_sd
 - Noise: [0.25 0.5 1 2] signal_sd
+
+The distributed replacement modes use evenly spaced, non-contiguous indices and
+are not equivalent to the contiguous clipping/dropout modes in the 30-repeat
+randomised experiment. Negative bias was not evaluated in this fixed grid.
 
 Automatic detector training:
 Robust median/MAD ranges and the 99th percentile threshold were estimated using clean outer-training experiments only.
