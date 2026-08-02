@@ -9,6 +9,10 @@ phm2010_bundle_high_resolution.csv
 slprj/
 codegen/
 
+# Python transient files
+__pycache__/
+*.pyc
+
 # OS/editor
 .DS_Store
 Thumbs.db
