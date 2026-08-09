@@ -2,6 +2,8 @@ clear; clc; close all;
 rng(20260718,'twister');
 
 paperRoot=fileparts(mfilename('fullpath'));
+dataRoot=string(getenv('SQTR_RAW_DATA_DIR'));
+if strlength(dataRoot)==0, dataRoot=string(paperRoot); end
 previousDir=fullfile(paperRoot,'external_validation_results');
 resultDir=fullfile(paperRoot,'additional_validation_results','reviewer_improvements');
 if ~exist(resultDir,'dir'), mkdir(resultDir); end
@@ -12,19 +14,20 @@ load(fullfile(previousDir,'external_validation_complete_results.mat'), ...
 faultTypes=["Saturation","Dropout","Bias","Noise"];
 repeatCount=30;
 bootstrapCount=10000;
+dropoutRates=[0.25 0.50 1.00];
 
 fprintf('========== Preparing locked clean-data policies ==========\n');
 nuaaPrepared=prepareDataset(nuaa, ...
-    fullfile(paperRoot,'nuaa_orthogonal_bundle_high_resolution.csv'), ...
+    fullfile(dataRoot,'nuaa_orthogonal_bundle_high_resolution.csv'), ...
     "NUAA",["force_z","vibration1","vibration2"], ...
-    ["force_z","vibration_x","vibration_y"],lambdaGrid);
+    ["force_z","vibration_x","vibration_y"],lambdaGrid,dropoutRates,20260718);
 phmPrepared=prepareDataset(phm, ...
-    fullfile(paperRoot,'phm2010_bundle_high_resolution.csv'), ...
+    fullfile(dataRoot,'phm2010_bundle_high_resolution.csv'), ...
     "PHM2010",["force_z","vibration_x","vibration_y"], ...
-    ["force_z","vibration_x","vibration_y"],lambdaGrid);
+    ["force_z","vibration_x","vibration_y"],lambdaGrid,dropoutRates,20260718);
 
-scenarioRows=cell(repeatCount*2*3*numel(faultTypes),12);
-experimentRows=cell(repeatCount*(9+3),9);
+scenarioRows=cell(repeatCount*2*3*numel(faultTypes),16);
+experimentRows=cell(repeatCount*(9+3),17);
 scenarioRow=0; experimentRow=0;
 repeatSeed=2026071800+(1:repeatCount)';
 repeatTimer=tic;
@@ -47,21 +50,27 @@ totalRuntimeSeconds=toc(repeatTimer);
 
 scenarioTable=cell2table(scenarioRows,'VariableNames', ...
     {'Repeat','Seed','Dataset','TargetSensor','FaultType','RunLevelN', ...
-    'FullMAE','AutoMAE','MAEImprovementPercent','CorrectDetectionRate', ...
+    'FullMAE','MedianReplacementMAE','MaskDropoutMAE','AutoMAE', ...
+    'MedianImprovementPercent','MaskDropoutImprovementPercent', ...
+    'AutoImprovementPercent','CorrectDetectionRate', ...
     'MeanDurationFraction','MeanSeverity'});
 scenarioTable.Dataset=string(scenarioTable.Dataset);
 scenarioTable.TargetSensor=string(scenarioTable.TargetSensor);
 scenarioTable.FaultType=string(scenarioTable.FaultType);
 
 experimentTable=cell2table(experimentRows,'VariableNames', ...
-    {'Repeat','Seed','Dataset','Experiment','RunLevelN','CleanMAE', ...
-    'FullRelativeMAE','AutoRelativeMAE','RelativeImprovementPercent'});
+    {'Repeat','Seed','Dataset','Experiment','RunLevelN','CleanFullMAE', ...
+    'CleanMedianReplacementMAE','CleanMaskDropoutMAE','CleanAutoMAE', ...
+    'CleanTriggerRate', ...
+    'FullRelativeMAE','MedianReplacementRelativeMAE','MaskDropoutRelativeMAE', ...
+    'AutoRelativeMAE','MedianImprovementPercent', ...
+    'MaskDropoutImprovementPercent','AutoImprovementPercent'});
 experimentTable.Dataset=string(experimentTable.Dataset);
 experimentTable.Experiment=string(experimentTable.Experiment);
 
 %% Average the 30 technical fault randomizations before inference
 datasets=["NUAA","PHM2010"];
-meanExperimentRows=cell(12,9); row=0;
+meanExperimentRows=cell(12,19); row=0;
 for datasetIndex=1:numel(datasets)
     ds=datasets(datasetIndex);
     experiments=unique(experimentTable.Experiment(experimentTable.Dataset==ds),'stable');
@@ -71,19 +80,37 @@ for datasetIndex=1:numel(datasets)
         row=row+1;
         meanExperimentRows(row,:)={ds,experiments(experimentIndex), ...
             experimentTable.RunLevelN(find(mask,1)),repeatCount, ...
-            mean(experimentTable.CleanMAE(mask)), ...
+            mean(experimentTable.CleanFullMAE(mask)), ...
+            mean(experimentTable.CleanMedianReplacementMAE(mask)), ...
+            mean(experimentTable.CleanMaskDropoutMAE(mask)), ...
+            mean(experimentTable.CleanAutoMAE(mask)), ...
+            mean(experimentTable.CleanTriggerRate(mask)), ...
             mean(experimentTable.FullRelativeMAE(mask)), ...
+            mean(experimentTable.MedianReplacementRelativeMAE(mask)), ...
+            mean(experimentTable.MaskDropoutRelativeMAE(mask)), ...
             mean(experimentTable.AutoRelativeMAE(mask)), ...
+            std(experimentTable.MedianReplacementRelativeMAE(mask)), ...
+            std(experimentTable.MaskDropoutRelativeMAE(mask)), ...
             std(experimentTable.AutoRelativeMAE(mask)), ...
+            100*(mean(experimentTable.FullRelativeMAE(mask))- ...
+            mean(experimentTable.MedianReplacementRelativeMAE(mask)))/ ...
+            mean(experimentTable.FullRelativeMAE(mask)), ...
+            100*(mean(experimentTable.FullRelativeMAE(mask))- ...
+            mean(experimentTable.MaskDropoutRelativeMAE(mask)))/ ...
+            mean(experimentTable.FullRelativeMAE(mask)), ...
             100*(mean(experimentTable.FullRelativeMAE(mask))- ...
             mean(experimentTable.AutoRelativeMAE(mask)))/ ...
             mean(experimentTable.FullRelativeMAE(mask))};
     end
 end
 meanExperimentTable=cell2table(meanExperimentRows,'VariableNames', ...
-    {'Dataset','Experiment','RunLevelN','TechnicalRepeatN','CleanMAE', ...
-    'FullRelativeMAE','AutoRelativeMAE','AutoRelativeMAESD', ...
-    'RelativeImprovementPercent'});
+    {'Dataset','Experiment','RunLevelN','TechnicalRepeatN','CleanFullMAE', ...
+    'CleanMedianReplacementMAE','CleanMaskDropoutMAE','CleanAutoMAE', ...
+    'CleanTriggerRate', ...
+    'FullRelativeMAE','MedianReplacementRelativeMAE','MaskDropoutRelativeMAE', ...
+    'AutoRelativeMAE','MedianReplacementRelativeMAESD','MaskDropoutRelativeMAESD', ...
+    'AutoRelativeMAESD','MedianImprovementPercent','MaskDropoutImprovementPercent', ...
+    'AutoImprovementPercent'});
 meanExperimentTable.Dataset=string(meanExperimentTable.Dataset);
 meanExperimentTable.Experiment=string(meanExperimentTable.Experiment);
 
@@ -124,6 +151,54 @@ statisticsTable.Dataset=string(statisticsTable.Dataset);
 statisticsTable.HolmAdjustedP=HolmAdjustedP;
 statisticsTable.SignificantAfterHolm=HolmAdjustedP<0.05;
 
+%% Deployable-baseline comparison family: comparator minus SQTR
+comparisonNames=["Detector-guided median replacement";"Mask-aware sensor-dropout ridge"];
+comparisonValues=[meanExperimentTable.MedianReplacementRelativeMAE, ...
+    meanExperimentTable.MaskDropoutRelativeMAE];
+autoValue=meanExperimentTable.AutoRelativeMAE;
+deployableRows=cell(numel(comparisonNames),12); deployableRawP=nan(numel(comparisonNames),1);
+for comparisonIndex=1:numel(comparisonNames)
+    comparatorValue=comparisonValues(:,comparisonIndex);
+    difference=comparatorValue-autoValue;
+    [deployableRawP(comparisonIndex),~,signedStats]=signrank(comparatorValue,autoValue);
+    bootstrapMean=nan(bootstrapCount,1); n=numel(difference);
+    for bootstrapIndex=1:bootstrapCount
+        sampled=randi(n,n,1);
+        bootstrapMean(bootstrapIndex)=mean(difference(sampled));
+    end
+    ci=prctile(bootstrapMean,[2.5 97.5]);
+    deployableRows(comparisonIndex,:)={comparisonNames(comparisonIndex),n,repeatCount, ...
+        mean(comparatorValue),mean(autoValue),mean(difference),ci(1),ci(2), ...
+        100*mean(difference)/mean(comparatorValue),sum(difference>0), ...
+        sum(difference<0),signedStats.signedrank};
+end
+deployableStatisticsTable=cell2table(deployableRows,'VariableNames', ...
+    {'Comparator','IndependentUnitN','TechnicalRepeatN','ComparatorRelativeMAE', ...
+    'SQTRRelativeMAE','MeanDifferenceComparatorMinusSQTR','BootstrapCILower', ...
+    'BootstrapCIUpper','RelativeReductionPercent','UnitsFavoringSQTR', ...
+    'UnitsFavoringComparator','SignedRankStatistic'});
+deployableStatisticsTable.Comparator=string(deployableStatisticsTable.Comparator);
+deployableStatisticsTable.RawP=deployableRawP;
+deployableStatisticsTable.HolmAdjustedP=holmAdjust(deployableRawP);
+deployableStatisticsTable.SignificantAfterHolm=deployableStatisticsTable.HolmAdjustedP<0.05;
+
+selectedPolicyRows=cell(12,5); selectedRow=0;
+preparedSets={nuaaPrepared,phmPrepared};
+for preparedIndex=1:numel(preparedSets)
+    prepared=preparedSets{preparedIndex};
+    for policyIndex=1:numel(prepared.policies)
+        selectedRow=selectedRow+1;
+        selectedPolicyRows(selectedRow,:)={prepared.name,prepared.policies(policyIndex).case, ...
+            prepared.policies(policyIndex).dropoutRate, ...
+            prepared.policies(policyIndex).dropoutLambda, ...
+            prepared.policies(policyIndex).dropoutSeed};
+    end
+end
+selectedPolicyTable=cell2table(selectedPolicyRows,'VariableNames', ...
+    {'Dataset','HeldOutUnit','SelectedDropoutRate','SelectedLambda','TrainingSeed'});
+selectedPolicyTable.Dataset=string(selectedPolicyTable.Dataset);
+selectedPolicyTable.HeldOutUnit=string(selectedPolicyTable.HeldOutUnit);
+
 %% Repeat-level variability is descriptive only
 repeatRows=cell(repeatCount,8);
 for repeatIndex=1:repeatCount
@@ -132,8 +207,8 @@ for repeatIndex=1:repeatCount
     autoValue=mean(experimentTable.AutoRelativeMAE(mask));
     repeatRows(repeatIndex,:)={repeatIndex,repeatSeed(repeatIndex), ...
         fullValue,autoValue,100*(fullValue-autoValue)/fullValue, ...
-        min(experimentTable.RelativeImprovementPercent(mask)), ...
-        max(experimentTable.RelativeImprovementPercent(mask)),sum(mask)};
+        min(experimentTable.AutoImprovementPercent(mask)), ...
+        max(experimentTable.AutoImprovementPercent(mask)),sum(mask)};
 end
 repeatTable=cell2table(repeatRows,'VariableNames', ...
     {'Repeat','Seed','FullRelativeMAE','AutoRelativeMAE', ...
@@ -154,7 +229,7 @@ for datasetIndex=1:numel(datasets)
             detectionRows(row,:)={ds,sensors(sensorIndex),faultTypes(faultIndex), ...
                 repeatCount,mean(scenarioTable.CorrectDetectionRate(mask)), ...
                 std(scenarioTable.CorrectDetectionRate(mask)), ...
-                mean(scenarioTable.MAEImprovementPercent(mask)), ...
+                mean(scenarioTable.AutoImprovementPercent(mask)), ...
                 mean(scenarioTable.MeanDurationFraction(mask)), ...
                 mean(scenarioTable.MeanSeverity(mask))};
         end
@@ -180,6 +255,8 @@ writetable(statisticsTable,fullfile(resultDir,'random_fault_statistics.csv'));
 writetable(repeatTable,fullfile(resultDir,'random_fault_repeat_variability.csv'));
 writetable(detectionTable,fullfile(resultDir,'random_fault_detection_summary.csv'));
 writetable(runtimeTable,fullfile(resultDir,'random_fault_runtime.csv'));
+writetable(deployableStatisticsTable,fullfile(resultDir,'deployable_baseline_statistics.csv'));
+writetable(selectedPolicyTable,fullfile(resultDir,'mask_dropout_selected_hyperparameters.csv'));
 
 %% Figure
 figure('Color','w','Position',[60 60 1500 980]);
@@ -243,13 +320,15 @@ exportgraphics(gcf,fullfile(resultDir,'randomized_fault_robustness.pdf'),'Conten
 
 save(fullfile(resultDir,'randomized_fault_robustness.mat'), ...
     'scenarioTable','experimentTable','meanExperimentTable','statisticsTable', ...
-    'repeatTable','detectionTable','runtimeTable','faultTypes','repeatSeed','-v7.3');
+    'repeatTable','detectionTable','runtimeTable','deployableStatisticsTable', ...
+    'selectedPolicyTable','faultTypes','repeatSeed','dropoutRates','-v7.3');
 
 fprintf('\n========== Randomized fault statistics ==========\n'); disp(statisticsTable);
 fprintf('\n========== Detection summary ==========\n'); disp(detectionTable);
+fprintf('\n========== Deployable-baseline comparisons ==========\n'); disp(deployableStatisticsTable);
 fprintf('\nSaved to:\n%s\n',resultDir);
 
-function P=prepareDataset(D,filePath,datasetName,rawSensorNames,displayNames,lambdaGrid)
+function P=prepareDataset(D,filePath,datasetName,rawSensorNames,displayNames,lambdaGrid,dropoutRates,baseSeed)
     T=readtable(filePath,'VariableNamingRule','preserve');
     groupId=makeRawGroupId(T,datasetName);
     n=numel(D.y); nSensors=numel(rawSensorNames);
@@ -269,14 +348,14 @@ function P=prepareDataset(D,filePath,datasetName,rawSensorNames,displayNames,lam
             cleanQuality(recordIndex,sensorIndex,:)=rawQualityDescriptors(x);
         end
     end
-    policies=fitLockedPolicies(D,cleanQuality,featureBlocks,lambdaGrid);
+    policies=fitLockedPolicies(D,cleanQuality,featureBlocks,lambdaGrid,dropoutRates,baseSeed);
     P.D=D; P.name=datasetName; P.rawSensorNames=rawSensorNames;
     P.displayNames=displayNames; P.rawSignals=rawSignals;
     P.featureBlocks=featureBlocks; P.cleanQuality=cleanQuality;
     P.policies=policies;
 end
 
-function policies=fitLockedPolicies(D,cleanQuality,featureBlocks,lambdaGrid)
+function policies=fitLockedPolicies(D,cleanQuality,featureBlocks,lambdaGrid,dropoutRates,baseSeed)
     cases=unique(D.experiment,'stable'); nSensors=numel(featureBlocks);
     Xfull=[D.processX,D.sensorX,D.timeX];
     policies=repmat(struct, numel(cases),1);
@@ -286,6 +365,18 @@ function policies=fitLockedPolicies(D,cleanQuality,featureBlocks,lambdaGrid)
         lambda=groupedTuneLambda(Xfull(isTrain,:),D.y(isTrain), ...
             D.experiment(isTrain),lambdaGrid);
         policies(caseIndex).fullModel=fitRidge(Xfull(isTrain,:),D.y(isTrain),lambda);
+        policies(caseIndex).sensorMedians=median(D.sensorX(isTrain,:),1,'omitnan');
+        dropoutSeed=baseSeed+caseIndex;
+        [dropoutRate,dropoutLambda]=groupedTuneMaskDropout( ...
+            Xfull(isTrain,:),D.y(isTrain),D.experiment(isTrain), ...
+            featureBlocks,size(D.processX,2),lambdaGrid,dropoutRates,dropoutSeed);
+        [XdropoutTrain,yDropoutTrain]=augmentMaskDropoutTraining( ...
+            Xfull(isTrain,:),D.y(isTrain),featureBlocks,size(D.processX,2), ...
+            policies(caseIndex).sensorMedians,dropoutRate,dropoutSeed);
+        policies(caseIndex).dropoutRate=dropoutRate;
+        policies(caseIndex).dropoutLambda=dropoutLambda;
+        policies(caseIndex).dropoutSeed=dropoutSeed;
+        policies(caseIndex).dropoutModel=fitRidge(XdropoutTrain,yDropoutTrain,dropoutLambda);
         policies(caseIndex).keepMasks=cell(1,nSensors);
         policies(caseIndex).dropModels=cell(1,nSensors);
         for sensorIndex=1:nSensors
@@ -305,8 +396,9 @@ end
 function [scenarioRows,experimentRows]=runRandomRepeat(P,faultTypes,repeatIndex,seed)
     D=P.D; n=numel(D.y); nSensors=numel(P.displayNames); nFaults=numel(faultTypes);
     cases=unique(D.experiment,'stable');
-    scenarioRows=cell(nSensors*nFaults,12);
-    caseFullSum=zeros(numel(cases),1); caseAutoSum=zeros(numel(cases),1);
+    scenarioRows=cell(nSensors*nFaults,16);
+    caseFullSum=zeros(numel(cases),1); caseMedianSum=zeros(numel(cases),1);
+    caseMaskDropoutSum=zeros(numel(cases),1); caseAutoSum=zeros(numel(cases),1);
     caseCount=zeros(numel(cases),1);
     row=0;
     for targetSensor=1:nSensors
@@ -321,39 +413,57 @@ function [scenarioRows,experimentRows]=runRandomRepeat(P,faultTypes,repeatIndex,
                     signalFeatures(corrupted);
                 quality(recordIndex,targetSensor,:)=rawQualityDescriptors(corrupted);
             end
-            [fullPrediction,autoPrediction,flags]=predictLocked(P,Xvariant,quality);
-            fullAbsolute=abs(fullPrediction-D.y); autoAbsolute=abs(autoPrediction-D.y);
+            [fullPrediction,medianPrediction,maskDropoutPrediction,autoPrediction,flags]= ...
+                predictLocked(P,Xvariant,quality);
+            fullAbsolute=abs(fullPrediction-D.y);
+            medianAbsolute=abs(medianPrediction-D.y);
+            maskDropoutAbsolute=abs(maskDropoutPrediction-D.y);
+            autoAbsolute=abs(autoPrediction-D.y);
             row=row+1;
             scenarioRows(row,:)={repeatIndex,seed,P.name,P.displayNames(targetSensor), ...
-                faultTypes(faultIndex),n,mean(fullAbsolute),mean(autoAbsolute), ...
+                faultTypes(faultIndex),n,mean(fullAbsolute),mean(medianAbsolute), ...
+                mean(maskDropoutAbsolute),mean(autoAbsolute), ...
+                100*(mean(fullAbsolute)-mean(medianAbsolute))/mean(fullAbsolute), ...
+                100*(mean(fullAbsolute)-mean(maskDropoutAbsolute))/mean(fullAbsolute), ...
                 100*(mean(fullAbsolute)-mean(autoAbsolute))/mean(fullAbsolute), ...
                 mean(flags==targetSensor),mean(durations),mean(severities)};
             for caseIndex=1:numel(cases)
                 mask=D.experiment==cases(caseIndex);
                 caseFullSum(caseIndex)=caseFullSum(caseIndex)+sum(fullAbsolute(mask));
+                caseMedianSum(caseIndex)=caseMedianSum(caseIndex)+sum(medianAbsolute(mask));
+                caseMaskDropoutSum(caseIndex)=caseMaskDropoutSum(caseIndex)+sum(maskDropoutAbsolute(mask));
                 caseAutoSum(caseIndex)=caseAutoSum(caseIndex)+sum(autoAbsolute(mask));
                 caseCount(caseIndex)=caseCount(caseIndex)+sum(mask);
             end
         end
     end
-    experimentRows=cell(numel(cases),9);
+    [cleanFullPrediction,cleanMedianPrediction,cleanMaskDropoutPrediction, ...
+        cleanAutoPrediction,cleanFlags]=predictLocked(P,D.sensorX,P.cleanQuality);
+    experimentRows=cell(numel(cases),17);
     for caseIndex=1:numel(cases)
         mask=D.experiment==cases(caseIndex);
-        policy=P.policies(caseIndex);
-        cleanX=[D.processX(mask,:),D.sensorX(mask,:),D.timeX(mask,:)];
-        cleanPrediction=predictRidge(policy.fullModel,cleanX);
-        cleanMAE=mean(abs(cleanPrediction-D.y(mask)));
-        fullRelative=(caseFullSum(caseIndex)/caseCount(caseIndex))/cleanMAE;
-        autoRelative=(caseAutoSum(caseIndex)/caseCount(caseIndex))/cleanMAE;
+        cleanFullMAE=mean(abs(cleanFullPrediction(mask)-D.y(mask)));
+        cleanMedianMAE=mean(abs(cleanMedianPrediction(mask)-D.y(mask)));
+        cleanMaskDropoutMAE=mean(abs(cleanMaskDropoutPrediction(mask)-D.y(mask)));
+        cleanAutoMAE=mean(abs(cleanAutoPrediction(mask)-D.y(mask)));
+        cleanTriggerRate=mean(cleanFlags(mask)>0);
+        fullRelative=(caseFullSum(caseIndex)/caseCount(caseIndex))/cleanFullMAE;
+        medianRelative=(caseMedianSum(caseIndex)/caseCount(caseIndex))/cleanFullMAE;
+        maskDropoutRelative=(caseMaskDropoutSum(caseIndex)/caseCount(caseIndex))/cleanFullMAE;
+        autoRelative=(caseAutoSum(caseIndex)/caseCount(caseIndex))/cleanFullMAE;
         experimentRows(caseIndex,:)={repeatIndex,seed,P.name,cases(caseIndex), ...
-            sum(mask),cleanMAE,fullRelative,autoRelative, ...
+            sum(mask),cleanFullMAE,cleanMedianMAE,cleanMaskDropoutMAE,cleanAutoMAE, ...
+            cleanTriggerRate,fullRelative,medianRelative,maskDropoutRelative,autoRelative, ...
+            100*(fullRelative-medianRelative)/fullRelative, ...
+            100*(fullRelative-maskDropoutRelative)/fullRelative, ...
             100*(fullRelative-autoRelative)/fullRelative};
     end
 end
 
-function [fullPrediction,autoPrediction,flagsAll]=predictLocked(P,Xvariant,quality)
+function [fullPrediction,medianPrediction,maskDropoutPrediction,autoPrediction,flagsAll]=predictLocked(P,Xvariant,quality)
     D=P.D; cases=unique(D.experiment,'stable'); n=numel(D.y);
     nSensors=numel(P.featureBlocks); fullPrediction=nan(n,1);
+    medianPrediction=nan(n,1); maskDropoutPrediction=nan(n,1);
     autoPrediction=nan(n,1); flagsAll=zeros(n,1);
     for caseIndex=1:numel(cases)
         mask=D.experiment==cases(caseIndex); policy=P.policies(caseIndex);
@@ -367,9 +477,76 @@ function [fullPrediction,autoPrediction,flagsAll]=predictLocked(P,Xvariant,quali
         end
         flags=detectQualityFaults(Xvariant(mask,:),quality(mask,:,:), ...
             policy.detector,P.featureBlocks);
+        [XmedianSensor,maskMatrix]=applyDetectorReplacement( ...
+            Xvariant(mask,:),flags,P.featureBlocks,policy.sensorMedians);
+        Xmedian=[D.processX(mask,:),XmedianSensor,D.timeX(mask,:)];
+        medianPred=predictRidge(policy.fullModel,Xmedian);
+        dropoutPred=predictRidge(policy.dropoutModel,[Xmedian,maskMatrix]);
         autoPred=routePredictions(fullPred,dropPred,flags);
-        fullPrediction(mask)=fullPred; autoPrediction(mask)=autoPred; flagsAll(mask)=flags;
+        fullPrediction(mask)=fullPred; medianPrediction(mask)=medianPred;
+        maskDropoutPrediction(mask)=dropoutPred; autoPrediction(mask)=autoPred;
+        flagsAll(mask)=flags;
     end
+end
+
+function [Xreplaced,maskMatrix]=applyDetectorReplacement(Xsensor,flags,featureBlocks,sensorMedians)
+    Xreplaced=Xsensor; n=size(Xsensor,1); nSensors=numel(featureBlocks);
+    maskMatrix=zeros(n,nSensors);
+    for sensorIndex=1:nSensors
+        rows=flags==sensorIndex;
+        if any(rows)
+            Xreplaced(rows,featureBlocks{sensorIndex})= ...
+                repmat(sensorMedians(featureBlocks{sensorIndex}),sum(rows),1);
+            maskMatrix(rows,sensorIndex)=1;
+        end
+    end
+end
+
+function [bestRate,bestLambda]=groupedTuneMaskDropout(X,y,groups,featureBlocks,nProcess,lambdaGrid,dropoutRates,baseSeed)
+    cases=unique(groups,'stable'); scores=nan(numel(dropoutRates),numel(lambdaGrid));
+    for rateIndex=1:numel(dropoutRates)
+        for lambdaIndex=1:numel(lambdaGrid)
+            foldMAE=nan(numel(cases),1);
+            for caseIndex=1:numel(cases)
+                isValidation=groups==cases(caseIndex); isTrain=~isValidation;
+                sensorColumns=cellfun(@(b)nProcess+b,featureBlocks,'UniformOutput',false);
+                medians=median(X(isTrain,:),1,'omitnan');
+                [Xaug,yaug]=augmentMaskDropoutTraining(X(isTrain,:),y(isTrain), ...
+                    featureBlocks,nProcess,medians(nProcess+(1:max(cellfun(@max,featureBlocks)))), ...
+                    dropoutRates(rateIndex),baseSeed+1000*caseIndex+100*rateIndex);
+                model=fitRidge(Xaug,yaug,lambdaGrid(lambdaIndex));
+                Xvalidation=X(isValidation,:); yvalidation=y(isValidation);
+                stateErrors=abs(predictRidge(model,[Xvalidation,zeros(sum(isValidation),numel(featureBlocks))])-yvalidation);
+                for sensorIndex=1:numel(featureBlocks)
+                    Xstate=Xvalidation; columns=sensorColumns{sensorIndex};
+                    Xstate(:,columns)=repmat(medians(columns),sum(isValidation),1);
+                    maskState=zeros(sum(isValidation),numel(featureBlocks));
+                    maskState(:,sensorIndex)=1;
+                    stateErrors=[stateErrors;abs(predictRidge(model,[Xstate,maskState])-yvalidation)]; %#ok<AGROW>
+                end
+                foldMAE(caseIndex)=mean(stateErrors);
+            end
+            scores(rateIndex,lambdaIndex)=mean(foldMAE);
+        end
+    end
+    [~,bestLinear]=min(scores,[],'all','linear');
+    [bestRateIndex,bestLambdaIndex]=ind2sub(size(scores),bestLinear);
+    bestRate=dropoutRates(bestRateIndex); bestLambda=lambdaGrid(bestLambdaIndex);
+end
+
+function [Xaug,yaug]=augmentMaskDropoutTraining(X,y,featureBlocks,nProcess,sensorMedians,dropoutRate,seed)
+    n=size(X,1); nSensors=numel(featureBlocks); stream=RandStream('mt19937ar','Seed',seed);
+    selected=find(rand(stream,n,1)<dropoutRate);
+    if isempty(selected), selected=randi(stream,n,1,1); end
+    selectedSensor=randi(stream,nSensors,numel(selected),1);
+    clean=[X,zeros(n,nSensors)]; masked=X(selected,:); masks=zeros(numel(selected),nSensors);
+    for rowIndex=1:numel(selected)
+        sensorIndex=selectedSensor(rowIndex);
+        columns=nProcess+featureBlocks{sensorIndex};
+        masked(rowIndex,columns)=sensorMedians(featureBlocks{sensorIndex});
+        masks(rowIndex,sensorIndex)=1;
+    end
+    Xaug=[clean;masked,masks]; yaug=[y(:);y(selected)];
 end
 
 function [xc,durationFraction,severity]=injectRandomFault(x,faultType)

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="501.624pt" height="128.796961pt" viewBox="0 0 501.624 128.796961" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="501.84pt" height="128.88pt" viewBox="0 0 501.84 128.88" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-07-31T13:05:57.524475</dc:date>
+    <dc:date>2026-08-09T22:32:59.726343</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,168 +21,168 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 128.796961 
-L 501.624 128.796961 
-L 501.624 0 
-L 0 0 
+   <path d="M 0 128.88
+L 501.84 128.88
+L 501.84 0
+L 0 0
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 16.764192 82.956505 
-L 82.21824 82.956505 
-Q 94.61484 82.956505 94.61484 80.115205 
-L 94.61484 43.291957 
-Q 94.61484 40.450657 82.21824 40.450657 
-L 16.764192 40.450657 
-Q 4.367592 40.450657 4.367592 43.291957 
-L 4.367592 80.115205 
-Q 4.367592 82.956505 16.764192 82.956505 
+    <path d="M 13.04784 85.83408
+L 87.32016 85.83408
+Q 98.36064 85.83408 98.36064 82.99872
+L 98.36064 43.30368
+Q 98.36064 40.46832 87.32016 40.46832
+L 13.04784 40.46832
+Q 2.00736 40.46832 2.00736 43.30368
+L 2.00736 82.99872
+Q 2.00736 85.83408 13.04784 85.83408
 z
-" clip-path="url(#p66061a3d6c)" style="fill: #eaf4fa; stroke: #a7a7a7; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p1f672d32ab)" style="fill: #e8f3fa; stroke: #aaaaaa; stroke-width: 0.9; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
-    <path d="M 115.936992 82.956505 
-L 181.39104 82.956505 
-Q 193.78764 82.956505 193.78764 80.115205 
-L 193.78764 43.291957 
-Q 193.78764 40.450657 181.39104 40.450657 
-L 115.936992 40.450657 
-Q 103.540392 40.450657 103.540392 43.291957 
-L 103.540392 80.115205 
-Q 103.540392 82.956505 115.936992 82.956505 
+    <path d="M 113.41584 85.83408
+L 187.68816 85.83408
+Q 198.72864 85.83408 198.72864 82.99872
+L 198.72864 43.30368
+Q 198.72864 40.46832 187.68816 40.46832
+L 113.41584 40.46832
+Q 102.37536 40.46832 102.37536 43.30368
+L 102.37536 82.99872
+Q 102.37536 85.83408 113.41584 85.83408
 z
-" clip-path="url(#p66061a3d6c)" style="fill: #ffffff; stroke: #a7a7a7; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p1f672d32ab)" style="fill: #ffffff; stroke: #aaaaaa; stroke-width: 0.9; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
-    <path d="M 215.109792 82.956505 
-L 280.56384 82.956505 
-Q 292.96044 82.956505 292.96044 80.115205 
-L 292.96044 43.291957 
-Q 292.96044 40.450657 280.56384 40.450657 
-L 215.109792 40.450657 
-Q 202.713192 40.450657 202.713192 43.291957 
-L 202.713192 80.115205 
-Q 202.713192 82.956505 215.109792 82.956505 
+    <path d="M 213.78384 85.83408
+L 288.05616 85.83408
+Q 299.09664 85.83408 299.09664 82.99872
+L 299.09664 43.30368
+Q 299.09664 40.46832 288.05616 40.46832
+L 213.78384 40.46832
+Q 202.74336 40.46832 202.74336 43.30368
+L 202.74336 82.99872
+Q 202.74336 85.83408 213.78384 85.83408
 z
-" clip-path="url(#p66061a3d6c)" style="fill: #fff1e8; stroke: #a7a7a7; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p1f672d32ab)" style="fill: #fff0e6; stroke: #aaaaaa; stroke-width: 0.9; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
-    <path d="M 314.282592 82.956505 
-L 379.73664 82.956505 
-Q 392.13324 82.956505 392.13324 80.115205 
-L 392.13324 43.291957 
-Q 392.13324 40.450657 379.73664 40.450657 
-L 314.282592 40.450657 
-Q 301.885992 40.450657 301.885992 43.291957 
-L 301.885992 80.115205 
-Q 301.885992 82.956505 314.282592 82.956505 
+    <path d="M 314.15184 85.83408
+L 388.42416 85.83408
+Q 399.46464 85.83408 399.46464 82.99872
+L 399.46464 43.30368
+Q 399.46464 40.46832 388.42416 40.46832
+L 314.15184 40.46832
+Q 303.11136 40.46832 303.11136 43.30368
+L 303.11136 82.99872
+Q 303.11136 85.83408 314.15184 85.83408
 z
-" clip-path="url(#p66061a3d6c)" style="fill: #ffffff; stroke: #a7a7a7; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p1f672d32ab)" style="fill: #ffffff; stroke: #aaaaaa; stroke-width: 0.9; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
-    <path d="M 413.455392 82.956505 
-L 478.90944 82.956505 
-Q 491.30604 82.956505 491.30604 80.115205 
-L 491.30604 43.291957 
-Q 491.30604 40.450657 478.90944 40.450657 
-L 413.455392 40.450657 
-Q 401.058792 40.450657 401.058792 43.291957 
-L 401.058792 80.115205 
-Q 401.058792 82.956505 413.455392 82.956505 
+    <path d="M 414.51984 85.83408
+L 488.79216 85.83408
+Q 499.83264 85.83408 499.83264 82.99872
+L 499.83264 43.30368
+Q 499.83264 40.46832 488.79216 40.46832
+L 414.51984 40.46832
+Q 403.47936 40.46832 403.47936 43.30368
+L 403.47936 82.99872
+Q 403.47936 85.83408 414.51984 85.83408
 z
-" clip-path="url(#p66061a3d6c)" style="fill: #eaf4fa; stroke: #a7a7a7; stroke-width: 0.8; stroke-linejoin: miter"/>
-   </g>
-   <g id="text_1">
-    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="49.491216" y="58.711311" transform="rotate(-0 49.491216 58.711311)">2 datasets</text>
-   </g>
-   <g id="text_2">
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(39.488841 68.875125)">NUAA</text>
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(32.483466 76.656399)">PHM 2010</text>
+" clip-path="url(#p1f672d32ab)" style="fill: #e8f3fa; stroke: #aaaaaa; stroke-width: 0.9; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
-    <path d="M 92.631384 61.703581 
-Q 99.077616 61.703581 104.405814 61.703581 
-" style="fill: none; stroke: #747474; stroke-linecap: round"/>
-    <path d="M 101.205814 60.103581 
-L 104.405814 61.703581 
-L 101.205814 63.303581 
+    <path d="M 98.855129 63.1512
+Q 100.369235 63.1512 100.765306 63.1512
+" clip-path="url(#p1f672d32ab)" style="fill: none; stroke: #777777; stroke-linecap: round"/>
+    <path d="M 97.165306 61.3512
+L 100.765306 63.1512
+L 97.165306 64.9512
 z
-" style="fill: #747474; stroke: #747474; stroke-linecap: round"/>
-   </g>
-   <g id="text_3">
-    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="148.664016" y="58.711311" transform="rotate(-0 148.664016 58.711311)">3 channels</text>
-   </g>
-   <g id="text_4">
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(144.665203 68.919)">Fz</text>
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(126.319828 76.689586)">vibration X / Y</text>
+" clip-path="url(#p1f672d32ab)" style="fill: #777777; stroke: #777777; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
-    <path d="M 191.804184 61.703581 
-Q 198.250416 61.703581 203.578614 61.703581 
-" style="fill: none; stroke: #747474; stroke-linecap: round"/>
-    <path d="M 200.378614 60.103581 
-L 203.578614 61.703581 
-L 200.378614 63.303581 
+    <path d="M 199.223129 63.1512
+Q 200.737235 63.1512 201.133306 63.1512
+" clip-path="url(#p1f672d32ab)" style="fill: none; stroke: #777777; stroke-linecap: round"/>
+    <path d="M 197.533306 61.3512
+L 201.133306 63.1512
+L 197.533306 64.9512
 z
-" style="fill: #747474; stroke: #747474; stroke-linecap: round"/>
-   </g>
-   <g id="text_5">
-    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="247.836816" y="58.711311" transform="rotate(-0 247.836816 58.711311)">4 modes</text>
-   </g>
-   <g id="text_6">
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(207.412191 68.161313)">plateau clipping · dropout</text>
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(229.428441 76.647399)">bias · noise</text>
+" clip-path="url(#p1f672d32ab)" style="fill: #777777; stroke: #777777; stroke-linecap: round"/>
    </g>
    <g id="patch_9">
-    <path d="M 290.976984 61.703581 
-Q 297.423216 61.703581 302.751414 61.703581 
-" style="fill: none; stroke: #747474; stroke-linecap: round"/>
-    <path d="M 299.551414 60.103581 
-L 302.751414 61.703581 
-L 299.551414 63.303581 
+    <path d="M 299.591129 63.1512
+Q 301.105235 63.1512 301.501306 63.1512
+" clip-path="url(#p1f672d32ab)" style="fill: none; stroke: #777777; stroke-linecap: round"/>
+    <path d="M 297.901306 61.3512
+L 301.501306 63.1512
+L 297.901306 64.9512
 z
-" style="fill: #747474; stroke: #747474; stroke-linecap: round"/>
-   </g>
-   <g id="text_7">
-    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="347.009616" y="58.711231" transform="rotate(-0 347.009616 58.711231)">Random severity</text>
-   </g>
-   <g id="text_8">
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(313.858116 68.205188)">severity and affected</text>
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(318.596616 75.931899)">segment sampled</text>
+" clip-path="url(#p1f672d32ab)" style="fill: #777777; stroke: #777777; stroke-linecap: round"/>
    </g>
    <g id="patch_10">
-    <path d="M 390.149784 61.703581 
-Q 396.596016 61.703581 401.924214 61.703581 
-" style="fill: none; stroke: #747474; stroke-linecap: round"/>
-    <path d="M 398.724214 60.103581 
-L 401.924214 61.703581 
-L 398.724214 63.303581 
+    <path d="M 399.959129 63.1512
+Q 401.473235 63.1512 401.869306 63.1512
+" clip-path="url(#p1f672d32ab)" style="fill: none; stroke: #777777; stroke-linecap: round"/>
+    <path d="M 398.269306 61.3512
+L 401.869306 63.1512
+L 398.269306 64.9512
 z
-" style="fill: #747474; stroke: #747474; stroke-linecap: round"/>
+" clip-path="url(#p1f672d32ab)" style="fill: #777777; stroke: #777777; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="2.5092" y="13.443887" transform="rotate(-0 2.5092 13.443887)">Randomised degradation pressure test</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="50.184" y="56.792555" transform="rotate(-0 50.184 56.792555)">2 datasets</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(40.320547 70.361407)">NUAA</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(33.412469 77.701448)">PHM 2010</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="150.552" y="56.792555" transform="rotate(-0 150.552 56.792555)">3 channels</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(146.608727 70.404672)">Fz</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(128.518148 77.734174)">vibration X / Y</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="250.92" y="56.792555" transform="rotate(-0 250.92 56.792555)">4 modes</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(211.056828 69.657508)">plateau clipping · dropout</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(232.767297 77.692573)">bias · noise</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="351.288" y="56.792479" transform="rotate(-0 351.288 56.792479)">Random severity</text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="446.182416" y="58.711311" transform="rotate(-0 446.182416 58.711311)">30 repeats</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(318.596937 69.700774)">severity and affected</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(323.269625 76.98701)">segment sampled</text>
    </g>
    <g id="text_10">
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(428.172853 68.876813)">within each</text>
-    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(431.772853 76.647399)">condition</text>
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="451.656" y="56.792555" transform="rotate(-0 451.656 56.792555)">30 repeats</text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 700; font-size: 7.7px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="250.812" y="101.201417" transform="rotate(-0 250.812 101.201417)">Independent inference: 9 NUAA experiments + 3 PHM cutters</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(433.89657 70.363071)">within each</text>
+    <text style="font-size: 7.1px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #222222" transform="translate(437.44657 77.692573)">condition</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 7px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #747474" x="250.812" y="114.658436" transform="rotate(-0 250.812 114.658436)">The 30 repeats quantify within-unit variability and are not independent inferential units.</text>
+    <text style="font-weight: 700; font-size: 7.7px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="250.92" y="103.163476" transform="rotate(-0 250.92 103.163476)">Independent inference: 9 NUAA experiments + 3 PHM tools</text>
    </g>
    <g id="text_13">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="2.88" y="10.160273" transform="rotate(-0 2.88 10.160273)">Randomised degradation pressure test</text>
+    <text style="font-size: 6.6px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #777777" x="250.92" y="117.055543" transform="rotate(-0 250.92 117.055543)">The 30 repeats quantify within-unit variability and are not independent inferential units.</text>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p66061a3d6c">
-   <rect x="2.88" y="12.264961" width="495.864" height="113.652"/>
+  <clipPath id="p1f672d32ab">
+   <rect x="0" y="0" width="501.84" height="128.88"/>
   </clipPath>
  </defs>
 </svg>
