@@ -113,6 +113,12 @@ columns 37-45.
   input-matched routing comparison
 - `targeted_reviewer_experiments/alarm_calibration`: fold-specific alarm rules
 - `targeted_reviewer_experiments/high_wear_underestimation`: high-wear audit
+- `targeted_reviewer_experiments/mask_dropout_seed_sensitivity`: five-base-seed
+  stability check for the mask-aware sensor-dropout ridge baseline
+- `targeted_reviewer_experiments/nasa_leave_one_condition_out`: post-hoc strict
+  holdout of the eight nominal NASA material–feed–depth conditions
+- `targeted_reviewer_experiments/nasa_detector_association`: post-hoc audit of
+  plateau-routing evidence by nominal condition and measured wear
 - `audit_outputs`: v17 code map, recomputed case effects, rule audits and
   machine-readable verification ledgers
 - `figures/v17`: regenerated Figures 2 and 3 in SVG, PDF, TIFF and PNG formats

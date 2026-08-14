@@ -1,0 +1,3 @@
+Association,SpearmanRho,CaseClusterCI_Lower,CaseClusterCI_Upper
+Overall record-level,0.490727980388775,0.366287613268316,0.654027674419038
+Within-case centred,0.585811764050818,0.400742420268285,0.740242644506766

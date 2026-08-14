@@ -1,11 +1,16 @@
 clear; clc; close all;
-rng(20260718,'twister');
+trainingSeedBase=str2double(getenv('SQTR_DROPOUT_SEED_BASE'));
+if ~isfinite(trainingSeedBase), trainingSeedBase=20260718; end
+rng(trainingSeedBase,'twister');
 
 paperRoot=fileparts(mfilename('fullpath'));
 dataRoot=string(getenv('SQTR_RAW_DATA_DIR'));
 if strlength(dataRoot)==0, dataRoot=string(paperRoot); end
 previousDir=fullfile(paperRoot,'external_validation_results');
-resultDir=fullfile(paperRoot,'additional_validation_results','reviewer_improvements');
+resultDir=string(getenv('SQTR_RANDOM_FAULT_RESULT_DIR'));
+if strlength(resultDir)==0
+    resultDir=fullfile(paperRoot,'additional_validation_results','reviewer_improvements');
+end
 if ~exist(resultDir,'dir'), mkdir(resultDir); end
 
 load(fullfile(previousDir,'external_validation_complete_results.mat'), ...
@@ -20,11 +25,11 @@ fprintf('========== Preparing locked clean-data policies ==========\n');
 nuaaPrepared=prepareDataset(nuaa, ...
     fullfile(dataRoot,'nuaa_orthogonal_bundle_high_resolution.csv'), ...
     "NUAA",["force_z","vibration1","vibration2"], ...
-    ["force_z","vibration_x","vibration_y"],lambdaGrid,dropoutRates,20260718);
+    ["force_z","vibration_x","vibration_y"],lambdaGrid,dropoutRates,trainingSeedBase);
 phmPrepared=prepareDataset(phm, ...
     fullfile(dataRoot,'phm2010_bundle_high_resolution.csv'), ...
     "PHM2010",["force_z","vibration_x","vibration_y"], ...
-    ["force_z","vibration_x","vibration_y"],lambdaGrid,dropoutRates,20260718);
+    ["force_z","vibration_x","vibration_y"],lambdaGrid,dropoutRates,trainingSeedBase);
 
 scenarioRows=cell(repeatCount*2*3*numel(faultTypes),16);
 experimentRows=cell(repeatCount*(9+3),17);

@@ -1,0 +1,2 @@
+Comparison,MeanConditionMacroDifference,BootstrapCI_Lower,BootstrapCI_Upper,ConditionsFavourSQTR,ConditionsFavourComparator,TiedConditions,ExactWilcoxonP
+FixedAllSensorTime_minus_SQTR,-0.00024266055120213,-0.0154118147738488,0.0098771203901691,6,1,1,0.296875
