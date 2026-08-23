@@ -1,0 +1,9 @@
+Suite,Left_method,Right_method,Difference_definition,IndependentUnitN,Left_mean_relative_MAE,Right_mean_relative_MAE,Mean_difference,Bootstrap95CI_lower,Bootstrap95CI_upper,Units_favour_left,Units_favour_right,Exact_Wilcoxon_p_unadjusted
+abrupt,Single-mask-trained dropout,Subset routing,right minus left; positive favours left,12,1.102107505023535,1.1500827017578903,0.04797519673435527,-0.019765880247498032,0.12257373969517908,7,5,0.38037109375
+abrupt,Multi-mask-trained dropout,Subset routing,right minus left; positive favours left,12,1.1661334794737508,1.1500827017578903,-0.01605077771586057,-0.07782407592920461,0.05221127750072064,6,6,0.791015625
+abrupt,Single-mask-trained dropout,Median replacement,right minus left; positive favours left,12,1.102107505023535,1.1141894884926253,0.012081983469090266,-0.03450563335645548,0.060290032427070185,9,3,0.5185546875
+abrupt,Multi-mask-trained dropout,Single-mask-trained dropout,right minus left; positive favours left,12,1.1661334794737508,1.102107505023535,-0.06402597445021584,-0.16088403081436695,0.006850061799457982,5,7,0.17626953125
+structured,Single-mask-trained dropout,Subset routing,right minus left; positive favours left,12,1.0959931388009214,1.125519318087447,0.029526179286525744,-0.030213896478133297,0.09788824038520771,6,6,0.67724609375
+structured,Multi-mask-trained dropout,Subset routing,right minus left; positive favours left,12,1.146491295360773,1.125519318087447,-0.02097197727332603,-0.09253725470820712,0.04995660193181217,6,6,0.67724609375
+structured,Single-mask-trained dropout,Median replacement,right minus left; positive favours left,12,1.0959931388009214,1.1019861977785363,0.005993058977614994,-0.05874596105192408,0.0772949332132095,7,5,0.7333984375
+structured,Multi-mask-trained dropout,Single-mask-trained dropout,right minus left; positive favours left,12,1.146491295360773,1.0959931388009214,-0.05049815655985177,-0.13815825941353677,0.012172193750464851,4,8,0.20361328125

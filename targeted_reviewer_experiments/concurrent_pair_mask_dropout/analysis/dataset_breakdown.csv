@@ -1,0 +1,29 @@
+Suite,Dataset,Method,IndependentUnitN,MeanRelativeMAE
+abrupt,NUAA,Fixed fusion,9,1.89539940389237
+abrupt,NUAA,Median replacement,9,1.1059757598533413
+abrupt,NUAA,Single-mask-trained dropout,9,1.0989908928910148
+abrupt,NUAA,Multi-mask-trained dropout,9,1.1555172709684187
+abrupt,NUAA,Single-channel SQTR,9,1.5358588815719
+abrupt,NUAA,Subset routing,9,1.1586931889040857
+abrupt,NUAA,Oracle pair exclusion,9,1.1447240479496608
+abrupt,PHM2010,Fixed fusion,3,1.3946595253101968
+abrupt,PHM2010,Median replacement,3,1.1388306744104766
+abrupt,PHM2010,Single-mask-trained dropout,3,1.111457341421095
+abrupt,PHM2010,Multi-mask-trained dropout,3,1.1979821049897468
+abrupt,PHM2010,Single-channel SQTR,3,1.12815663392623
+abrupt,PHM2010,Subset routing,3,1.1242512403193032
+abrupt,PHM2010,Oracle pair exclusion,3,1.0339724543895923
+structured,NUAA,Fixed fusion,9,1.2845055320291157
+structured,NUAA,Median replacement,9,1.0997626639818758
+structured,NUAA,Single-mask-trained dropout,9,1.1024443777616622
+structured,NUAA,Multi-mask-trained dropout,9,1.1498738939853053
+structured,NUAA,Single-channel SQTR,9,1.1525821311836466
+structured,NUAA,Subset routing,9,1.1365254908458118
+structured,NUAA,Oracle pair exclusion,9,1.1447240479496608
+structured,PHM2010,Fixed fusion,3,1.1258894364970067
+structured,PHM2010,Median replacement,3,1.108656799168518
+structured,PHM2010,Single-mask-trained dropout,3,1.076639421918699
+structured,PHM2010,Multi-mask-trained dropout,3,1.1363434994871768
+structured,PHM2010,Single-channel SQTR,3,1.070582619825451
+structured,PHM2010,Subset routing,3,1.0925007998123533
+structured,PHM2010,Oracle pair exclusion,3,1.0339724543895923
