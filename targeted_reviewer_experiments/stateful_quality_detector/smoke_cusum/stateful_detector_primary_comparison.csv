@@ -1,0 +1,2 @@
+IndependentUnitN,TrainingTechnicalRepeats,TestTechnicalRepeats,PointRelativeMAE,StatefulRelativeMAE,PointMinusStateful,BootstrapCI_Lower,BootstrapCI_Upper,UnitsFavourStateful,UnitsFavourPoint,TiedUnits,SignedRankStatistic,ExactP
+12,1,1,1.09921925301531,1.1574042813488,-0.0581850283334974,-0.147445890234535,-0.0028073088578387,4,8,0,19,0.12939453125

@@ -1,0 +1,52 @@
+========== Preparing locked clean-data policies ==========
+Random fault repeat 1/1
+
+========== Randomized fault statistics ==========
+     Dataset      IndependentUnitN    TechnicalRepeatN    FullRelativeMAE    AutoRelativeMAE    MeanPairedDifference    RelativeImprovementPercent    UnitsImproved    UnitsWorsened      RawP       SignedRankStatistic    BootstrapCILower    BootstrapCIUpper    HolmAdjustedP    SignificantAfterHolm
+    __________    ________________    ________________    _______________    _______________    ____________________    __________________________    _____________    _____________    _________    ___________________    ________________    ________________    _____________    ____________________
+
+    "NUAA"                9                  1                1.4553             1.0841               -0.37119                    25.507                    8                1           0.011719             2                 -0.65286            -0.12771          0.023438              true         
+    "PHM2010"             3                  1                1.1876             1.0533               -0.13434                    11.312                    2                1                0.5             1                 -0.35593           0.0079639               0.5              false        
+    "Combined"           12                  1                1.3884             1.0764               -0.31198                    22.471                   10                2          0.0048828             5                 -0.54588            -0.11875          0.014648              true         
+
+
+========== Detection summary ==========
+     Dataset     TargetSensor      FaultType      TechnicalRepeatN    MeanCorrectDetectionRate    SDCorrectDetectionRate    MeanMAEImprovementPercent    MeanDurationFraction    MeanSeverity
+    _________    _____________    ____________    ________________    ________________________    ______________________    _________________________    ____________________    ____________
+
+    "NUAA"       "force_z"        "Saturation"           1                     0.97368                      0                         54.573                   0.41931             0.41931   
+    "NUAA"       "force_z"        "Dropout"              1                     0.91447                      0                         20.173                   0.40505             0.40505   
+    "NUAA"       "force_z"        "Bias"                 1                     0.57237                      0                         28.237                   0.61363              1.7208   
+    "NUAA"       "force_z"        "Noise"                1                     0.59211                      0                          48.65                   0.61648              1.1042   
+    "NUAA"       "vibration_x"    "Saturation"           1                           1                      0                        -1.9074                   0.41423             0.41423   
+    "NUAA"       "vibration_x"    "Dropout"              1                           1                      0                        -1.5492                   0.40222             0.40222   
+    "NUAA"       "vibration_x"    "Bias"                 1                    0.078947                      0                         -1.925                   0.58828              1.8173   
+    "NUAA"       "vibration_x"    "Noise"                1                    0.013158                      0                       -0.55949                   0.58664              1.0745   
+    "NUAA"       "vibration_y"    "Saturation"           1                           1                      0                         29.152                   0.41671             0.41671   
+    "NUAA"       "vibration_y"    "Dropout"              1                           1                      0                         8.5459                   0.39932             0.39932   
+    "NUAA"       "vibration_y"    "Bias"                 1                     0.53289                      0                         21.242                   0.63076              1.7672   
+    "NUAA"       "vibration_y"    "Noise"                1                    0.046053                      0                         2.5428                   0.58446              1.1411   
+    "PHM2010"    "force_z"        "Saturation"           1                           1                      0                         41.078                   0.40079             0.40079   
+    "PHM2010"    "force_z"        "Dropout"              1                           1                      0                          48.96                   0.39838             0.39838   
+    "PHM2010"    "force_z"        "Bias"                 1                     0.50476                      0                         15.848                   0.60822              1.7161   
+    "PHM2010"    "force_z"        "Noise"                1                     0.22646                      0                         3.2457                   0.60301              1.1073   
+    "PHM2010"    "vibration_x"    "Saturation"           1                     0.99894                      0                         13.537                   0.40361             0.40361   
+    "PHM2010"    "vibration_x"    "Dropout"              1                     0.83069                      0                        -4.9964                   0.39848             0.39848   
+    "PHM2010"    "vibration_x"    "Bias"                 1                     0.14603                      0                        0.77197                    0.5929              1.7754   
+    "PHM2010"    "vibration_x"    "Noise"                1                   0.0074074                      0                         -0.252                   0.58899              1.1266   
+    "PHM2010"    "vibration_y"    "Saturation"           1                     0.99894                      0                         7.6853                   0.40061             0.40061   
+    "PHM2010"    "vibration_y"    "Dropout"              1                      0.6709                      0                        -10.428                   0.40968             0.40968   
+    "PHM2010"    "vibration_y"    "Bias"                 1                    0.039153                      0                       -0.45372                   0.60369              1.7463   
+    "PHM2010"    "vibration_y"    "Noise"                1                           0                      0                       -0.59687                   0.59483               1.104   
+
+
+========== Deployable-baseline comparisons ==========
+                 Comparator                 IndependentUnitN    TechnicalRepeatN    ComparatorRelativeMAE    SQTRRelativeMAE    MeanDifferenceComparatorMinusSQTR    BootstrapCILower    BootstrapCIUpper    RelativeReductionPercent    UnitsFavoringSQTR    UnitsFavoringComparator    SignedRankStatistic     RawP      HolmAdjustedP    SignificantAfterHolm
+    ____________________________________    ________________    ________________    _____________________    _______________    _________________________________    ________________    ________________    ________________________    _________________    _______________________    ___________________    _______    _____________    ____________________
+
+    "Detector-guided median replacement"           12                  1                    1.052                1.0764                      -0.02437                   -0.079836             0.02172                -2.3165                     6                       6                       35             0.79102          1                 false        
+    "Mask-aware sensor-dropout ridge"              12                  1                   1.0616                1.0764                     -0.014836                   -0.065974            0.033876                -1.3976                     5                       7                       32             0.62207          1                 false        
+
+
+Saved to:
+C:\Users\66485\Documents\¼Ö\sqtr-tool-wear-estimation\targeted_reviewer_experiments\detector_threshold_sensitivity\smoke_test

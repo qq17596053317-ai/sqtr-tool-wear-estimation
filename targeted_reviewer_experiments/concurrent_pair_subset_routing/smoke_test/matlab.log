@@ -1,0 +1,21 @@
+========== Preparing locked clean-data policies ==========
+Concurrent-pair repeat 1/1
+
+========== Concurrent-pair strategy statistics ==========
+          Response           IndependentUnitN    TechnicalRepeatN    FixedRelativeMAE    ResponseRelativeMAE    FixedMinusResponse    BootstrapCI_Lower    BootstrapCI_Upper    UnitsFavourResponse    UnitsFavourFixed    TiedUnits    SignedRankStatistic      RawP       HolmAdjustedP    SignificantAfterHolm
+    _____________________    ________________    ________________    ________________    ___________________    __________________    _________________    _________________    ___________________    ________________    _________    ___________________    _________    _____________    ____________________
+
+    "Median replacement"            12                  1                 1.7779               1.1108                0.66704               0.26311               1.1499                 10                    2                0                73             0.0048828      0.014648              true         
+    "Single-channel SQTR"           12                  1                 1.7779               1.4176                0.36029               0.14094              0.61452                 11                    1                0                73             0.0048828      0.014648              true         
+    "Subset routing"                12                  1                 1.7779               1.1462                0.63169               0.24698                1.106                 10                    2                0                72             0.0068359      0.014648              true         
+
+
+========== Subset routing versus single-channel SQTR ==========
+    IndependentUnitN    TechnicalRepeatN    SingleSQTR_RelativeMAE    SubsetRoutingRelativeMAE    SingleMinusSubset    BootstrapCI_Lower    BootstrapCI_Upper    UnitsFavourSubset    UnitsFavourSingle    SignedRankStatistic     ExactP 
+    ________________    ________________    ______________________    ________________________    _________________    _________________    _________________    _________________    _________________    ___________________    ________
+
+           12                  1                    1.4176                     1.1462                  0.2714              0.077218              0.50084                 8                    4                    67             0.026855
+
+
+Saved concurrent-pair results to:
+C:\Users\66485\Documents\¼Ö\sqtr-tool-wear-estimation\targeted_reviewer_experiments\concurrent_pair_subset_routing\smoke_test

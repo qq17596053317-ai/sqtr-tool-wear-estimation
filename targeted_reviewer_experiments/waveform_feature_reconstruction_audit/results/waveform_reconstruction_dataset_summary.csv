@@ -1,0 +1,3 @@
+Dataset,RecordN,SensorN,HighResolutionSampleN,MedianAbsoluteDifference,MaximumAbsoluteDifference,MedianStandardisedAbsoluteDifference,MaximumStandardisedAbsoluteDifference,FractionWithin1eMinus12
+NUAA,152,8,234902,0,0,0,0,1
+PHM2010,945,7,104675,0,0,0,0,1

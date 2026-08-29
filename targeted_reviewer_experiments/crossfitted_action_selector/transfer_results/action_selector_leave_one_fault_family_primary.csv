@@ -1,0 +1,2 @@
+Audit,IndependentUnitN,TrainingSelectedFixedRelativeMAE,TransferredLearnedRelativeMAE,FixedMinusTransferred,BootstrapCI_Lower,BootstrapCI_Upper,UnitsFavourTransferred,UnitsFavourFixed,TiedUnits,SignedRankStatistic,ExactP,HolmAdjustedP
+LeaveOneFaultFamilyOut,12,1.06969330555622,1.08521644871851,-0.0155231431622856,-0.0427985132141118,0.0035924879878363,3,9,0,20,0.1513671875,0.302734375

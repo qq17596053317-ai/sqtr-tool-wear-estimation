@@ -1,0 +1,20 @@
+Threshold grid started: 2026-08-14T22:54:33.6815379+08:00
+Starting floor=3 quantile=97.5 at 2026-08-14T22:54:33.7721962+08:00
+Finished floor=3 quantile=97.5 exit=0 at 2026-08-14T22:56:53.8620624+08:00
+Starting floor=3 quantile=99 at 2026-08-14T22:56:53.8948506+08:00
+Finished floor=3 quantile=99 exit=0 at 2026-08-14T22:59:09.8269089+08:00
+Starting floor=3 quantile=99.5 at 2026-08-14T22:59:09.8355771+08:00
+Finished floor=3 quantile=99.5 exit=0 at 2026-08-14T23:01:26.7486823+08:00
+Starting floor=4 quantile=97.5 at 2026-08-14T23:01:26.7558318+08:00
+Finished floor=4 quantile=97.5 exit=0 at 2026-08-14T23:03:43.6597045+08:00
+Starting floor=4 quantile=99 at 2026-08-14T23:03:43.6687188+08:00
+Finished floor=4 quantile=99 exit=0 at 2026-08-14T23:05:55.5338465+08:00
+Starting floor=4 quantile=99.5 at 2026-08-14T23:05:55.5478644+08:00
+Finished floor=4 quantile=99.5 exit=0 at 2026-08-14T23:07:58.3784399+08:00
+Starting floor=5 quantile=97.5 at 2026-08-14T23:07:58.3891196+08:00
+Finished floor=5 quantile=97.5 exit=0 at 2026-08-14T23:10:02.2200927+08:00
+Starting floor=5 quantile=99 at 2026-08-14T23:10:02.2267076+08:00
+Finished floor=5 quantile=99 exit=0 at 2026-08-14T23:12:08.0891951+08:00
+Starting floor=5 quantile=99.5 at 2026-08-14T23:12:08.1043937+08:00
+Finished floor=5 quantile=99.5 exit=0 at 2026-08-14T23:14:07.9515559+08:00
+Threshold grid completed: 2026-08-14T23:14:07.9554060+08:00

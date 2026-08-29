@@ -1,0 +1,2 @@
+IndependentUnitN,TechnicalRepeatN,SingleSQTR_RelativeMAE,SubsetRoutingRelativeMAE,SingleMinusSubset,BootstrapCI_Lower,BootstrapCI_Upper,UnitsFavourSubset,UnitsFavourSingle,SignedRankStatistic,ExactP
+12,30,1.43393331966048,1.15008270175789,0.283850617902591,0.0731547191459362,0.528676961111941,8,4,66,0.0341796875

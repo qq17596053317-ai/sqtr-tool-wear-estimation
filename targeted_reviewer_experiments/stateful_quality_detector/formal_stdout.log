@@ -1,0 +1,30 @@
+Preparing grouped full and exclusion branches...
+Stateful detector outer unit NUAA | W1 (1/9)
+Stateful detector outer unit NUAA | W2 (2/9)
+Stateful detector outer unit NUAA | W3 (3/9)
+Stateful detector outer unit NUAA | W4 (4/9)
+Stateful detector outer unit NUAA | W5 (5/9)
+Stateful detector outer unit NUAA | W6 (6/9)
+Stateful detector outer unit NUAA | W7 (7/9)
+Stateful detector outer unit NUAA | W8 (8/9)
+Stateful detector outer unit NUAA | W9 (9/9)
+Stateful detector outer unit PHM2010 | c1 (1/3)
+Stateful detector outer unit PHM2010 | c4 (2/3)
+Stateful detector outer unit PHM2010 | c6 (3/3)
+
+Stateful detector primary comparison:
+    IndependentUnitN    TrainingTechnicalRepeats    TestTechnicalRepeats    PointRelativeMAE    StatefulRelativeMAE    PointMinusStateful    BootstrapCI_Lower    BootstrapCI_Upper    UnitsFavourStateful    UnitsFavourPoint    TiedUnits    SignedRankStatistic    ExactP 
+    ________________    ________________________    ____________________    ________________    ___________________    __________________    _________________    _________________    ___________________    ________________    _________    ___________________    _______
+
+           12                      3                         30                  1.0825                1.137               -0.054522             -0.13847            -0.0033959                 3                    9                0                18             0.10986
+
+
+Dataset summary:
+     Dataset      IndependentUnitN    FullRelativeMAE    PointRelativeMAE    StatefulRelativeMAE    OracleRelativeMAE    PointEventDetectionRate    StatefulEventDetectionRate    PointMeanDetectionDelay    StatefulMeanDetectionDelay    StatefulCleanTriggerRate
+    __________    ________________    _______________    ________________    ___________________    _________________    _______________________    __________________________    _______________________    __________________________    ________________________
+
+    "NUAA"                9               1.2361              1.0826               1.1549                1.0799                  0.54475                     0.49198                      3.8099                       3.7658                       0.16322        
+    "PHM2010"             3               1.0973              1.0821               1.0832                 1.023                  0.69167                     0.60556                      86.988                       100.08                      0.061376        
+    "Combined"           12               1.2014              1.0825                1.137                1.0656                  0.58148                     0.52037                      24.605                       27.845                       0.13776        
+
+Saved to C:\Users\66485\Documents\¼Ö\sqtr-tool-wear-estimation\targeted_reviewer_experiments\stateful_quality_detector\results

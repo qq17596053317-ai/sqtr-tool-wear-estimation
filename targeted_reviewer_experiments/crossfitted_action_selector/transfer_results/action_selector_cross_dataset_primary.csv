@@ -1,0 +1,2 @@
+Audit,IndependentUnitN,TrainingSelectedFixedRelativeMAE,TransferredLearnedRelativeMAE,FixedMinusTransferred,BootstrapCI_Lower,BootstrapCI_Upper,UnitsFavourTransferred,UnitsFavourFixed,TiedUnits,SignedRankStatistic,ExactP,HolmAdjustedP
+CrossDataset,12,1.05668500546655,1.08802080047594,-0.0313357950093906,-0.0700931821046545,-0.00110762300580504,4,8,0,20,0.1513671875,0.302734375

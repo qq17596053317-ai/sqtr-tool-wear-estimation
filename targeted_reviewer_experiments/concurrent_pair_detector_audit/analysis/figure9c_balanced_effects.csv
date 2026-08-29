@@ -1,0 +1,5 @@
+DistortionFamily,LeftMethod,RightMethod,DifferenceDefinition,IndependentUnitN,TechnicalRepeatN,LeftMeanRelativeMAE,RightMeanRelativeMAE,MeanDifference,Bootstrap95CI_Lower,Bootstrap95CI_Upper,UnitsFavourLeft,UnitsFavourRight,ExactWilcoxonP_Unadjusted
+Abrupt,Single-channel router,Subset routing,left minus right; negative values favour the left method,12,30,1.4339333196604824,1.1500827017578903,0.28385061790259236,0.0718487128236,0.5308568688196297,4,8,0.0341796875
+Abrupt,Median replacement,Subset routing,left minus right; negative values favour the left method,12,30,1.1141894884926253,1.1500827017578903,-0.035893213265265005,-0.11391665506525674,0.03465836478056978,6,6,0.7333984375
+Abrupt,Single-mask dropout,Subset routing,left minus right; negative values favour the left method,12,30,1.102107505023535,1.1500827017578903,-0.04797519673435527,-0.1226561595980427,0.01892288400714746,7,5,0.38037109375
+Abrupt,Multi-mask dropout,Subset routing,left minus right; negative values favour the left method,12,30,1.1661334794737508,1.1500827017578903,0.01605077771586057,-0.049934815709261525,0.07704018476355247,6,6,0.791015625

@@ -1048,23 +1048,27 @@ function runConcurrentPairExperiment(nuaaPrepared,phmPrepared,faultTypes, ...
         detectorQuantile,trainingSeedBase,faultSet)
     pairList=nchoosek(1:3,2);
     repeatSeed=2026081500+(1:repeatCount)';
-    scenarioRows=cell(repeatCount*2*size(pairList,1)*numel(faultTypes),18);
+    scenarioRows=cell(repeatCount*2*size(pairList,1)*numel(faultTypes),20);
     experimentRows=cell(repeatCount*12,23);
-    scenarioRow=0; experimentRow=0;
+    unitDetectorRows=cell(repeatCount*12*size(pairList,1)*numel(faultTypes),12);
+    scenarioRow=0; experimentRow=0; unitDetectorRow=0;
     timer=tic;
     for repeatIndex=1:repeatCount
         rng(repeatSeed(repeatIndex),'twister');
         fprintf('Concurrent-pair repeat %d/%d\n',repeatIndex,repeatCount);
-        [nuaaScenario,nuaaExperiment]=runConcurrentPairRepeat( ...
+        [nuaaScenario,nuaaExperiment,nuaaUnitDetector]=runConcurrentPairRepeat( ...
             nuaaPrepared,faultTypes,pairList,repeatIndex,repeatSeed(repeatIndex));
-        [phmScenario,phmExperiment]=runConcurrentPairRepeat( ...
+        [phmScenario,phmExperiment,phmUnitDetector]=runConcurrentPairRepeat( ...
             phmPrepared,faultTypes,pairList,repeatIndex,repeatSeed(repeatIndex));
         currentScenario=[nuaaScenario;phmScenario];
         currentExperiment=[nuaaExperiment;phmExperiment];
+        currentUnitDetector=[nuaaUnitDetector;phmUnitDetector];
         scenarioRows(scenarioRow+(1:size(currentScenario,1)),:)=currentScenario;
         scenarioRow=scenarioRow+size(currentScenario,1);
         experimentRows(experimentRow+(1:size(currentExperiment,1)),:)=currentExperiment;
         experimentRow=experimentRow+size(currentExperiment,1);
+        unitDetectorRows(unitDetectorRow+(1:size(currentUnitDetector,1)),:)=currentUnitDetector;
+        unitDetectorRow=unitDetectorRow+size(currentUnitDetector,1);
     end
     runtimeSeconds=toc(timer);
 
@@ -1073,6 +1077,7 @@ function runConcurrentPairExperiment(nuaaPrepared,phmPrepared,faultTypes, ...
         'FullMAE','MedianReplacementMAE','SingleMaskTrainMAE','MultiMaskTrainMAE', ...
         'SingleSQTR_MAE','SubsetRoutingMAE','OraclePairExclusionMAE', ...
         'ExactSetDetectionRate','BothTargetDetectedRate', ...
+        'OnlyOneTargetDetectedRate','NeitherTargetDetectedRate', ...
         'ExtraChannelTriggerRate','MeanDurationFraction','MeanSeverity'});
     scenarioTable.Dataset=string(scenarioTable.Dataset);
     scenarioTable.TargetPair=string(scenarioTable.TargetPair);
@@ -1089,6 +1094,16 @@ function runConcurrentPairExperiment(nuaaPrepared,phmPrepared,faultTypes, ...
         'SingleMaskImprovementPercent','MultiMaskImprovementPercent'});
     experimentTable.Dataset=string(experimentTable.Dataset);
     experimentTable.Experiment=string(experimentTable.Experiment);
+
+    unitDetectorTable=cell2table(unitDetectorRows,'VariableNames', ...
+        {'Repeat','Seed','Dataset','Experiment','TargetPair','FaultType', ...
+        'RunLevelN','ExactSetDetectionRate','BothTargetDetectedRate', ...
+        'OnlyOneTargetDetectedRate','NeitherTargetDetectedRate', ...
+        'ExtraChannelTriggerRate'});
+    unitDetectorTable.Dataset=string(unitDetectorTable.Dataset);
+    unitDetectorTable.Experiment=string(unitDetectorTable.Experiment);
+    unitDetectorTable.TargetPair=string(unitDetectorTable.TargetPair);
+    unitDetectorTable.FaultType=string(unitDetectorTable.FaultType);
 
     datasets=["NUAA","PHM2010"];
     meanRows=cell(12,21); meanRow=0;
@@ -1218,13 +1233,14 @@ function runConcurrentPairExperiment(nuaaPrepared,phmPrepared,faultTypes, ...
 
     writetable(scenarioTable,fullfile(resultDir,'concurrent_pair_scenarios.csv'));
     writetable(experimentTable,fullfile(resultDir,'concurrent_pair_unit_repeats.csv'));
+    writetable(unitDetectorTable,fullfile(resultDir,'concurrent_pair_unit_detector_states.csv'));
     writetable(meanExperimentTable,fullfile(resultDir,'concurrent_pair_unit_means.csv'));
     writetable(strategyStatistics,fullfile(resultDir,'concurrent_pair_strategy_statistics.csv'));
     writetable(subsetVsSingle,fullfile(resultDir,'concurrent_pair_subset_vs_single.csv'));
     writetable(datasetSummary,fullfile(resultDir,'concurrent_pair_dataset_summary.csv'));
     writetable(configurationTable,fullfile(resultDir,'concurrent_pair_configuration.csv'));
     save(fullfile(resultDir,'concurrent_pair_results.mat'), ...
-        'scenarioTable','experimentTable','meanExperimentTable', ...
+        'scenarioTable','experimentTable','unitDetectorTable','meanExperimentTable', ...
         'strategyStatistics','subsetVsSingle','datasetSummary', ...
         'configurationTable','faultTypes','pairList','repeatSeed','-v7.3');
 
@@ -1235,16 +1251,17 @@ function runConcurrentPairExperiment(nuaaPrepared,phmPrepared,faultTypes, ...
     fprintf('\nSaved concurrent-pair results to:\n%s\n',resultDir);
 end
 
-function [scenarioRows,experimentRows]=runConcurrentPairRepeat( ...
+function [scenarioRows,experimentRows,unitDetectorRows]=runConcurrentPairRepeat( ...
         P,faultTypes,pairList,repeatIndex,seed)
     D=P.D; n=numel(D.y); nPairs=size(pairList,1); nFaults=numel(faultTypes);
     units=unique(D.experiment,'stable');
-    scenarioRows=cell(nPairs*nFaults,18);
+    scenarioRows=cell(nPairs*nFaults,20);
     fullSum=zeros(numel(units),1); medianSum=zeros(numel(units),1);
     singleMaskSum=zeros(numel(units),1); multiMaskSum=zeros(numel(units),1);
     singleSum=zeros(numel(units),1); subsetSum=zeros(numel(units),1);
     oracleSum=zeros(numel(units),1); unitCount=zeros(numel(units),1);
-    row=0;
+    unitDetectorRows=cell(numel(units)*nPairs*nFaults,12);
+    row=0; detectorRow=0;
     for pairIndex=1:nPairs
         targetPair=pairList(pairIndex,:);
         targetMask=false(1,3); targetMask(targetPair)=true;
@@ -1275,7 +1292,10 @@ function [scenarioRows,experimentRows]=runConcurrentPairRepeat( ...
             subsetAbsolute=abs(subsetPrediction-D.y);
             oracleAbsolute=abs(oraclePrediction-D.y);
             exactSet=all(flagMatrix==repmat(targetMask,n,1),2);
-            bothTarget=all(flagMatrix(:,targetPair),2);
+            targetDetectedCount=sum(flagMatrix(:,targetPair),2);
+            bothTarget=targetDetectedCount==2;
+            onlyOneTarget=targetDetectedCount==1;
+            neitherTarget=targetDetectedCount==0;
             nonTarget=setdiff(1:3,targetPair);
             extraTrigger=flagMatrix(:,nonTarget);
             row=row+1;
@@ -1283,10 +1303,17 @@ function [scenarioRows,experimentRows]=runConcurrentPairRepeat( ...
                 faultTypes(faultIndex),n,mean(fullAbsolute),mean(medianAbsolute), ...
                 mean(singleMaskAbsolute),mean(multiMaskAbsolute), ...
                 mean(singleAbsolute),mean(subsetAbsolute),mean(oracleAbsolute), ...
-                mean(exactSet),mean(bothTarget),mean(extraTrigger), ...
+                mean(exactSet),mean(bothTarget),mean(onlyOneTarget), ...
+                mean(neitherTarget),mean(extraTrigger), ...
                 mean(durations,'all'),mean(severities,'all')};
             for unitIndex=1:numel(units)
                 mask=D.experiment==units(unitIndex);
+                detectorRow=detectorRow+1;
+                unitDetectorRows(detectorRow,:)={repeatIndex,seed,P.name, ...
+                    units(unitIndex),pairLabel,faultTypes(faultIndex),sum(mask), ...
+                    mean(exactSet(mask)),mean(bothTarget(mask)), ...
+                    mean(onlyOneTarget(mask)),mean(neitherTarget(mask)), ...
+                    mean(extraTrigger(mask))};
                 fullSum(unitIndex)=fullSum(unitIndex)+sum(fullAbsolute(mask));
                 medianSum(unitIndex)=medianSum(unitIndex)+sum(medianAbsolute(mask));
                 singleMaskSum(unitIndex)=singleMaskSum(unitIndex)+sum(singleMaskAbsolute(mask));

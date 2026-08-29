@@ -1,0 +1,2 @@
+TrainingTechnicalRepeats,TestTechnicalRepeats,ReleaseThresholdFraction,DetectorFloor,DetectorQuantile,BootstrapResamples,TrainingSeedBase,TestSeedBase,RuntimeSeconds
+3,30,0.8,4,99,10000,2026087000,2026090000,156.7129948

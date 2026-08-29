@@ -1,0 +1,16 @@
+Dataset,Sensor,FeatureValueN,MedianAbsoluteDifference,MaximumAbsoluteDifference,MedianStandardisedAbsoluteDifference,MaximumStandardisedAbsoluteDifference
+NUAA,force_z,1368,0,0,0,0
+NUAA,bending_moment_x,1368,0,0,0,0
+NUAA,bending_moment_y,1368,0,0,0,0
+NUAA,torsion,1368,0,0,0,0
+NUAA,vibration1,1368,0,0,0,0
+NUAA,vibration2,1368,0,0,0,0
+NUAA,spindle_power,1368,0,0,0,0
+NUAA,spindle_current,1368,0,0,0,0
+PHM2010,force_x,8505,0,0,0,0
+PHM2010,force_y,8505,0,0,0,0
+PHM2010,force_z,8505,0,0,0,0
+PHM2010,vibration_x,8505,0,0,0,0
+PHM2010,vibration_y,8505,0,0,0,0
+PHM2010,vibration_z,8505,0,0,0,0
+PHM2010,acoustic_emission_rms,8505,0,0,0,0

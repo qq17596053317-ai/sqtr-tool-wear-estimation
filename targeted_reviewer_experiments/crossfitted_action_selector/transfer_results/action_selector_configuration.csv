@@ -1,0 +1,2 @@
+TrainingTechnicalRepeats,TestTechnicalRepeats,TreeMaxSplits,DetectorFloor,DetectorQuantile,BootstrapResamples,TrainingSeedBase,TestSeedBase,RuntimeSeconds
+5,30,3,4,99,10000,2026081500,2026085000,1010.8640126

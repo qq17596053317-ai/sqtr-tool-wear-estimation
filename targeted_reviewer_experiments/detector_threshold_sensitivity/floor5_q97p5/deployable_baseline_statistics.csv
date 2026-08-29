@@ -1,0 +1,3 @@
+Comparator,IndependentUnitN,TechnicalRepeatN,ComparatorRelativeMAE,SQTRRelativeMAE,MeanDifferenceComparatorMinusSQTR,BootstrapCILower,BootstrapCIUpper,RelativeReductionPercent,UnitsFavoringSQTR,UnitsFavoringComparator,SignedRankStatistic,RawP,HolmAdjustedP,SignificantAfterHolm
+Detector-guided median replacement,12,30,1.04265342282687,1.06756762915035,-0.0249142063234774,-0.0849948905142696,0.0233326076217394,-2.38950026710978,6,6,36,0.85009765625,1,0
+Mask-aware sensor-dropout ridge,12,30,1.05173565140663,1.06756762915035,-0.0158319777437224,-0.0660092252537216,0.0302981915618502,-1.50531910965918,5,7,34,0.7333984375,1,0

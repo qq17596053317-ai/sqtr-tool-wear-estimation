@@ -1,0 +1,50 @@
+========== Preparing locked clean-data policies ==========
+Concurrent-pair repeat 1/30
+Concurrent-pair repeat 2/30
+Concurrent-pair repeat 3/30
+Concurrent-pair repeat 4/30
+Concurrent-pair repeat 5/30
+Concurrent-pair repeat 6/30
+Concurrent-pair repeat 7/30
+Concurrent-pair repeat 8/30
+Concurrent-pair repeat 9/30
+Concurrent-pair repeat 10/30
+Concurrent-pair repeat 11/30
+Concurrent-pair repeat 12/30
+Concurrent-pair repeat 13/30
+Concurrent-pair repeat 14/30
+Concurrent-pair repeat 15/30
+Concurrent-pair repeat 16/30
+Concurrent-pair repeat 17/30
+Concurrent-pair repeat 18/30
+Concurrent-pair repeat 19/30
+Concurrent-pair repeat 20/30
+Concurrent-pair repeat 21/30
+Concurrent-pair repeat 22/30
+Concurrent-pair repeat 23/30
+Concurrent-pair repeat 24/30
+Concurrent-pair repeat 25/30
+Concurrent-pair repeat 26/30
+Concurrent-pair repeat 27/30
+Concurrent-pair repeat 28/30
+Concurrent-pair repeat 29/30
+Concurrent-pair repeat 30/30
+
+========== Concurrent-pair strategy statistics ==========
+          Response           IndependentUnitN    TechnicalRepeatN    FixedRelativeMAE    ResponseRelativeMAE    FixedMinusResponse    BootstrapCI_Lower    BootstrapCI_Upper    UnitsFavourResponse    UnitsFavourFixed    TiedUnits    SignedRankStatistic      RawP      HolmAdjustedP    SignificantAfterHolm
+    _____________________    ________________    ________________    ________________    ___________________    __________________    _________________    _________________    ___________________    ________________    _________    ___________________    ________    _____________    ____________________
+
+    "Median replacement"            12                  30                1.2449                1.102                0.14287               0.017655             0.29187                  9                    3                0                62             0.077148       0.23145              false        
+    "Single-channel SQTR"           12                  30                1.2449               1.1321                0.11277             -0.0096147             0.25008                 10                    2                0                61             0.092285       0.23145              false        
+    "Subset routing"                12                  30                1.2449               1.1255                0.11933              -0.002265             0.27014                  8                    4                0                58              0.15137       0.23145              false        
+
+
+========== Subset routing versus single-channel SQTR ==========
+    IndependentUnitN    TechnicalRepeatN    SingleSQTR_RelativeMAE    SubsetRoutingRelativeMAE    SingleMinusSubset    BootstrapCI_Lower    BootstrapCI_Upper    UnitsFavourSubset    UnitsFavourSingle    SignedRankStatistic    ExactP 
+    ________________    ________________    ______________________    ________________________    _________________    _________________    _________________    _________________    _________________    ___________________    _______
+
+           12                  30                   1.1321                     1.1255                 0.0065629            -0.022066            0.031076                 7                    5                    49             0.46973
+
+
+Saved concurrent-pair results to:
+C:\Users\66485\Documents\¼Ö\sqtr-tool-wear-estimation\targeted_reviewer_experiments\concurrent_pair_subset_routing\structured_results
